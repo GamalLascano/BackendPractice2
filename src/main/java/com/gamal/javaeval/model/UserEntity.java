@@ -1,5 +1,6 @@
 package com.gamal.javaeval.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
@@ -34,7 +35,7 @@ public class UserEntity extends UserRequest{
     private String name;
 
     private String email;
-
+    @JsonIgnore
     private String password;
 
     @OneToMany(cascade = CascadeType.ALL)

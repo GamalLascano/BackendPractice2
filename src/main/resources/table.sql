@@ -2,7 +2,7 @@ CREATE TABLE user(
     id UUID,
     created TIMESTAMP,
     lastLogin TIMESTAMP,
-    token VARCHAR(100),
+    token VARCHAR(256),
     isActive BOOLEAN,
     email VARCHAR(100),
     name VARCHAR(100),

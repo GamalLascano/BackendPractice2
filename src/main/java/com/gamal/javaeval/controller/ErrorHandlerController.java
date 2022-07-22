@@ -1,15 +1,13 @@
 package com.gamal.javaeval.controller;
 
 import com.gamal.javaeval.model.CustomError;
-import com.gamal.javaeval.model.UserNotFoundException;
+import com.gamal.javaeval.model.UserException;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
-import org.springframework.web.bind.annotation.ResponseStatus;
-import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.context.request.WebRequest;
 import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExceptionHandler;
 
@@ -27,8 +25,8 @@ public class ErrorHandlerController extends ResponseEntityExceptionHandler {
         error.setTimestamp(Timestamp.valueOf(LocalDateTime.now()));
         return new ResponseEntity<>(error,HttpStatus.BAD_REQUEST);
     }
-    @ExceptionHandler(UserNotFoundException.class)
-    public ResponseEntity<CustomError> handleUserNotFound(UserNotFoundException ex){
+    @ExceptionHandler(UserException.class)
+    public ResponseEntity<CustomError> handleUserNotFound(UserException ex){
         CustomError error = new CustomError();
         error.setCodigo(ex.getStatus().value());
         error.setDetail(ex.getMessage());
