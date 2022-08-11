@@ -52,11 +52,4 @@ public class UserServiceImpl implements UserService {
         }
     }
 
-    @Override
-    public String token(String token) {
-        UserEntity entity = new UserEntity();
-        entity.setEmail(token);
-        return tokenHelper.generateToken(entity);
-    }
-
 }

@@ -25,8 +25,4 @@ public class UserController {
     public ResponseEntity<UserEntity> login(@RequestParam(name = "token")String token){
         return ResponseEntity.ok(userService.login(token));
     }
-    @PostMapping("token")
-    public ResponseEntity<String> createTestToken(@RequestParam(name = "token")String token){
-    return ResponseEntity.ok(userService.token(token));
-    }
 }
