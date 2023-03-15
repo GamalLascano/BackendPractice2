@@ -1,14 +1,10 @@
 package com.gamal.javaeval.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.*;
-import javax.validation.constraints.Email;
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Pattern;
 import java.sql.Timestamp;
 import java.time.Instant;
 import java.util.List;
@@ -18,7 +14,7 @@ import java.util.UUID;
 @Table(name = "user")
 @Getter
 @Setter
-public class UserEntity extends UserRequest{
+public class UserEntity{
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id", nullable = false)

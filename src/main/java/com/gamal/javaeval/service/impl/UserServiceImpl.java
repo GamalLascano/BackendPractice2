@@ -17,12 +17,16 @@ import java.util.Optional;
 
 @Service
 public class UserServiceImpl implements UserService {
+    private final UserRepository repository;
+    private final BCryptPasswordEncoder bcryptEncoder;
+    private final TokenHelper tokenHelper;
+
     @Autowired
-    private UserRepository repository;
-    @Autowired
-    private BCryptPasswordEncoder bcryptEncoder;
-    @Autowired
-    private TokenHelper tokenHelper;
+    public UserServiceImpl(UserRepository repository, BCryptPasswordEncoder bcryptEncoder, TokenHelper tokenHelper) {
+        this.repository = repository;
+        this.bcryptEncoder = bcryptEncoder;
+        this.tokenHelper = tokenHelper;
+    }
 
     @Override
     public UserEntity signUp(UserRequest request) {
@@ -31,8 +35,7 @@ public class UserServiceImpl implements UserService {
         entity.setToken(tokenHelper.generateToken(entity));
         if (repository.findByEmail(entity.getEmail()).isPresent())
             throw new UserException(HttpStatus.BAD_REQUEST, "User already exists en the database");
-        UserEntity savedEntity = repository.save(entity);
-        return savedEntity;
+        return repository.save(entity);
     }
 
     @Override

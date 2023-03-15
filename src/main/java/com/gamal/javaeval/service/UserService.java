@@ -4,7 +4,7 @@ import com.gamal.javaeval.model.UserEntity;
 import com.gamal.javaeval.model.UserRequest;
 
 public interface UserService {
-    public UserEntity signUp(UserRequest request);
-    public UserEntity login(String token);
+    UserEntity signUp(UserRequest request);
+    UserEntity login(String token);
 
 }
