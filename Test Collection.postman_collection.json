@@ -1,0 +1,122 @@
+{
+	"info": {
+		"_postman_id": "821cf766-1f94-4ddf-907b-5e16f40fc06b",
+		"name": "Test Collection",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "22120209"
+	},
+	"item": [
+		{
+			"name": "Sign up",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var jsonData = JSON.parse(responseBody);\r",
+							"pm.collectionVariables.set(\"loginToken\",jsonData.token)"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"Gamu\",\r\n    \"email\": \"gamal.lascano@globallogic.com\",\r\n    \"password\": \"Geniale22\",\r\n    \"phones\": [\r\n        {\r\n            \"number\": 2216306817,\r\n            \"citycode\": 1902,\r\n            \"countrycode\": \"AR\"\r\n        },\r\n        {\r\n            \"number\": 2216306819,\r\n            \"citycode\": 1900,\r\n            \"countrycode\": \"UY\"\r\n        }\r\n    ]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/sign-up",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"sign-up"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Login",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var jsonData = JSON.parse(responseBody);\r",
+							"pm.collectionVariables.set(\"loginToken\",jsonData.token)"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/login?token={{loginToken}}",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"login"
+					],
+					"query": [
+						{
+							"key": "token",
+							"value": "{{loginToken}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Login fail",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/login?token=eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJnYW1hbC5sYXNjYW5vQGdsb2JhbGxvZ2ljIiwiaWF0IjoxNjc4ODk2NTkxfQ.5LeqAEawQMIh6lXikI7p-YyX7Sd8bH9mvjSybNVmlnPt3I_YvWQyRlcYVxZKCk9v4Z-2xD0GQko_Vx3R-Z2c8g",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"login"
+					],
+					"query": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJnYW1hbC5sYXNjYW5vQGdsb2JhbGxvZ2ljIiwiaWF0IjoxNjc4ODk2NTkxfQ.5LeqAEawQMIh6lXikI7p-YyX7Sd8bH9mvjSybNVmlnPt3I_YvWQyRlcYVxZKCk9v4Z-2xD0GQko_Vx3R-Z2c8g"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"variable": [
+		{
+			"key": "loginToken",
+			"value": "ex"
+		},
+		{
+			"key": "loginToken",
+			"value": ""
+		}
+	]
+}
