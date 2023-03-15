@@ -6,7 +6,6 @@ import com.gamal.javaeval.model.UserException;
 import com.gamal.javaeval.model.UserRequest;
 import com.gamal.javaeval.repository.UserRepository;
 import com.gamal.javaeval.service.UserService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -21,7 +20,6 @@ public class UserServiceImpl implements UserService {
     private final BCryptPasswordEncoder bcryptEncoder;
     private final TokenHelper tokenHelper;
 
-    @Autowired
     public UserServiceImpl(UserRepository repository, BCryptPasswordEncoder bcryptEncoder, TokenHelper tokenHelper) {
         this.repository = repository;
         this.bcryptEncoder = bcryptEncoder;
